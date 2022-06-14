@@ -108,7 +108,7 @@ class SignUpController: UIViewController {
 
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
-                print("Failed to register user with error \(error)")
+                print("DEBUG: Failed to register user with error \(error)")
                 return
             }
 
@@ -120,7 +120,7 @@ class SignUpController: UIViewController {
                           "accountType": accountTypeIndex] as [String : Any]
 
             Database.database().reference().child("users").child(uid).updateChildValues(values) { error, ref in
-                print("Successfully register user and saved data...")
+                print("DEBUG: Successfully register user and saved data...")
             }
         }
     }
