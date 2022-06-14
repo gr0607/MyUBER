@@ -7,10 +7,13 @@
 
 import UIKit
 import Firebase
+import MapKit
 
 class HomeController: UIViewController {
 
     //MARK: - Properties
+
+    private let mapView = MKMapView()
 
     //MARK: - Lifecycle
 
@@ -18,18 +21,20 @@ class HomeController: UIViewController {
         super.viewDidLoad()
         checkIfUserIsLoggedIn()
     //    signOut()
-        view.backgroundColor = .red
     }
 
     //MARK: - API
 
     func checkIfUserIsLoggedIn() {
         if Auth.auth().currentUser?.uid == nil {
-            let nav = UINavigationController(rootViewController: LoginController())
-            nav.modalPresentationStyle = .fullScreen
-            present(nav, animated: true, completion: nil)
+            DispatchQueue.main.async {
+                let nav = UINavigationController(rootViewController: LoginController())
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: true, completion: nil)
+            }
+
         } else {
-            print("DEBUG: User id is \(Auth.auth().currentUser?.uid)")
+            configureUI()
         }
     }
 
@@ -39,5 +44,12 @@ class HomeController: UIViewController {
         } catch {
             print("DEBUG: Error signing out")
         }
+    }
+
+    //MARK: - Helpers
+
+    func configureUI() {
+        view.addSubview(mapView)
+        mapView.frame = view.frame
     }
 }
