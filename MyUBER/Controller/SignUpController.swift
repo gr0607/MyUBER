@@ -142,6 +142,8 @@ class SignUpController: UIViewController {
                                                    passwordContainerView,
                                                    accountTypeContainerView,
                                                     signUpButton])
+
+
         stack.axis = .vertical
         stack.distribution = .fillProportionally
         stack.spacing = 24

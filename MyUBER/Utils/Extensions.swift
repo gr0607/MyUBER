@@ -21,7 +21,8 @@ extension UIColor {
 
 extension UIView {
 
-    func inputContainerView(image: UIImage, textField: UITextField? = nil, segmentedControl: UISegmentedControl? = nil) -> UIView {
+    func inputContainerView(image: UIImage, textField: UITextField? = nil,
+                            segmentedControl: UISegmentedControl? = nil) -> UIView {
         let view = UIView()
 
         let imageView = UIImageView()
@@ -49,14 +50,16 @@ extension UIView {
                      paddingLeft: 8, paddingRight: 8)
             sc.centerY(inView: view, constant: 8)
         }
-        
+
         let separatorView = UIView()
         separatorView.backgroundColor = .lightGray
         view.addSubview(separatorView)
-        separatorView.anchor(left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingLeft: 8, height: 0.75)
+        separatorView.anchor(left: view.leftAnchor, bottom: view.bottomAnchor,
+                             right: view.rightAnchor, paddingLeft: 8, height: 0.75)
 
         return view
     }
+
 
     func anchor(top: NSLayoutYAxisAnchor? = nil,
                 left: NSLayoutXAxisAnchor? = nil,
