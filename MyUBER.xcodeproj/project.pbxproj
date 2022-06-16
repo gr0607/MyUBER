@@ -11,6 +11,7 @@
 		84136EAC2859107E0023CD1C /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84136EAB2859107E0023CD1C /* HomeController.swift */; };
 		849F0F8E283BDE0800F3DAD6 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F0F8D283BDE0800F3DAD6 /* LoginController.swift */; };
 		849F0F90283BEB9100F3DAD6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F0F8F283BEB9100F3DAD6 /* Extensions.swift */; };
+		84C1151F285B9B4300EDFA8E /* LocationInputActivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C1151E285B9B4300EDFA8E /* LocationInputActivationView.swift */; };
 		84C98718283D401F003A2CE7 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C98717283D401F003A2CE7 /* SignUpController.swift */; };
 		84C9871A283D5879003A2CE7 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C98719283D5879003A2CE7 /* AuthButton.swift */; };
 		84F04A2C2839356A00D4C0A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F04A2B2839356A00D4C0A9 /* AppDelegate.swift */; };
@@ -27,6 +28,7 @@
 		84136EAB2859107E0023CD1C /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		849F0F8D283BDE0800F3DAD6 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		849F0F8F283BEB9100F3DAD6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		84C1151E285B9B4300EDFA8E /* LocationInputActivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInputActivationView.swift; sourceTree = "<group>"; };
 		84C98717283D401F003A2CE7 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		84C98719283D5879003A2CE7 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		84F04A282839356A00D4C0A9 /* MyUBER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyUBER.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				84C98719283D5879003A2CE7 /* AuthButton.swift */,
+				84C1151E285B9B4300EDFA8E /* LocationInputActivationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				849F0F8E283BDE0800F3DAD6 /* LoginController.swift in Sources */,
 				84F04A2E2839356A00D4C0A9 /* SceneDelegate.swift in Sources */,
 				849F0F90283BEB9100F3DAD6 /* Extensions.swift in Sources */,
+				84C1151F285B9B4300EDFA8E /* LocationInputActivationView.swift in Sources */,
 				84C98718283D401F003A2CE7 /* SignUpController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -114,6 +114,12 @@ extension UIView {
             anchor(left: left, paddingLeft: paddingLeft)
         }
     }
+
+    func setDimensions(height: CGFloat, width: CGFloat) {
+        translatesAutoresizingMaskIntoConstraints = false
+        heightAnchor.constraint(equalToConstant: height).isActive = true
+        widthAnchor.constraint(equalToConstant: width).isActive = true
+    }
 }
 
 extension UITextField {
