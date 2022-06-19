@@ -22,9 +22,9 @@ class HomeController: UIViewController {
     private let locationInputView = LocationInputView()
     private let tableView = UITableView()
 
-    private var fullname: String? {
+    private var user: User? {
         didSet {
-            locationInputView.titleLabel.text = fullname
+            locationInputView.user = user
         }
     }
 
@@ -43,8 +43,8 @@ class HomeController: UIViewController {
     //MARK: - API
 
     func fetchUserData() {
-        Service.shared.fetchUserData { fullname in
-            self.fullname = fullname
+        Service.shared.fetchUserData { user in
+            self.user = user
         }
     }
 
