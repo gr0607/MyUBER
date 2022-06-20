@@ -10,6 +10,7 @@ import Firebase
 import MapKit
 
 private let reuseIdentifier = "Location Cell"
+private let annotationIdentifier = "DriverAnnotation"
 
 class HomeController: UIViewController {
 
@@ -109,6 +110,7 @@ class HomeController: UIViewController {
 
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
+        mapView.delegate = self
     }
 
     func configureLocationInputView() {
@@ -139,6 +141,20 @@ class HomeController: UIViewController {
         tableView.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: height)
 
         view.addSubview(tableView)
+    }
+}
+
+//MARK: - MKMapViewDelegate
+
+extension HomeController: MKMapViewDelegate {
+
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if let annotation = annotation as? DriverAnnotation {
+            let view = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+            view.image = #imageLiteral(resourceName: "chevron-sign-to-right")
+            return view
+        }
+        return nil
     }
 }
 
