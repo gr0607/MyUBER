@@ -141,7 +141,7 @@ class SignUpController: UIViewController {
         REF_USERS.child(uid).updateChildValues(values) { error, ref in
 
              guard let controller = UIApplication.shared.keyWindow?.rootViewController as? HomeController else { return }
-             controller.configureUI()
+             controller.configure()
              self.dismiss(animated: true, completion: nil)
          }
     }
