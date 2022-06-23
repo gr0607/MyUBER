@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		84136EAA285906EC0023CD1C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84136EA9285906EC0023CD1C /* GoogleService-Info.plist */; };
 		84136EAC2859107E0023CD1C /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84136EAB2859107E0023CD1C /* HomeController.swift */; };
+		844D17C22864C35400947801 /* RideActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D17C12864C35400947801 /* RideActionView.swift */; };
 		8450FED4285CD96100DDBCA3 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450FED3285CD96100DDBCA3 /* LocationCell.swift */; };
 		847ACE05285F6D9400C90ADE /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847ACE04285F6D9400C90ADE /* Service.swift */; };
 		847ACE07285F72BA00C90ADE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847ACE06285F72BA00C90ADE /* User.swift */; };
@@ -32,6 +33,7 @@
 		056E674B4EA8D25A4FD49A97 /* Pods_MyUBER.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyUBER.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84136EA9285906EC0023CD1C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84136EAB2859107E0023CD1C /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		844D17C12864C35400947801 /* RideActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideActionView.swift; sourceTree = "<group>"; };
 		8450FED3285CD96100DDBCA3 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		847ACE04285F6D9400C90ADE /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		847ACE06285F72BA00C90ADE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				84C1151E285B9B4300EDFA8E /* LocationInputActivationView.swift */,
 				84C11520285BA4A800EDFA8E /* LocationInputView.swift */,
 				8450FED3285CD96100DDBCA3 /* LocationCell.swift */,
+				844D17C12864C35400947801 /* RideActionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				84F04A2E2839356A00D4C0A9 /* SceneDelegate.swift in Sources */,
 				8450FED4285CD96100DDBCA3 /* LocationCell.swift in Sources */,
 				849F0F90283BEB9100F3DAD6 /* Extensions.swift in Sources */,
+				844D17C22864C35400947801 /* RideActionView.swift in Sources */,
 				847ACE07285F72BA00C90ADE /* User.swift in Sources */,
 				847ACE05285F6D9400C90ADE /* Service.swift in Sources */,
 				84C1151F285B9B4300EDFA8E /* LocationInputActivationView.swift in Sources */,
