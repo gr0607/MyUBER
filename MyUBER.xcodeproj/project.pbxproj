@@ -10,6 +10,7 @@
 		84136EAA285906EC0023CD1C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84136EA9285906EC0023CD1C /* GoogleService-Info.plist */; };
 		84136EAC2859107E0023CD1C /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84136EAB2859107E0023CD1C /* HomeController.swift */; };
 		844D17C22864C35400947801 /* RideActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D17C12864C35400947801 /* RideActionView.swift */; };
+		844D438D2866E9870043A58F /* PickupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D438C2866E9870043A58F /* PickupController.swift */; };
 		8450FED4285CD96100DDBCA3 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450FED3285CD96100DDBCA3 /* LocationCell.swift */; };
 		846CEF192866D39100CA43C2 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846CEF182866D39100CA43C2 /* Trip.swift */; };
 		847ACE05285F6D9400C90ADE /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847ACE04285F6D9400C90ADE /* Service.swift */; };
@@ -35,6 +36,7 @@
 		84136EA9285906EC0023CD1C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84136EAB2859107E0023CD1C /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		844D17C12864C35400947801 /* RideActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideActionView.swift; sourceTree = "<group>"; };
+		844D438C2866E9870043A58F /* PickupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupController.swift; sourceTree = "<group>"; };
 		8450FED3285CD96100DDBCA3 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		846CEF182866D39100CA43C2 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		847ACE04285F6D9400C90ADE /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				849F0F8D283BDE0800F3DAD6 /* LoginController.swift */,
 				84C98717283D401F003A2CE7 /* SignUpController.swift */,
 				84136EAB2859107E0023CD1C /* HomeController.swift */,
+				844D438C2866E9870043A58F /* PickupController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				84136EAC2859107E0023CD1C /* HomeController.swift in Sources */,
 				84C11521285BA4A800EDFA8E /* LocationInputView.swift in Sources */,
 				846CEF192866D39100CA43C2 /* Trip.swift in Sources */,
+				844D438D2866E9870043A58F /* PickupController.swift in Sources */,
 				849B23E52860DD67009628D2 /* DriverAnnotation.swift in Sources */,
 				849F0F8E283BDE0800F3DAD6 /* LoginController.swift in Sources */,
 				84C71893285F843800B19634 /* LocaionHandler.swift in Sources */,

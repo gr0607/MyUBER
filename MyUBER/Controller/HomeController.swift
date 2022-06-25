@@ -52,7 +52,10 @@ class HomeController: UIViewController {
 
     private var trip: Trip? {
         didSet {
-            print("DEBUG: show pickup passenger controller")
+            guard let trip = trip else { return }
+            let controller = PickupController(trip: trip)
+            controller.modalPresentationStyle = .fullScreen
+            self.present(controller, animated: true, completion: nil)
         }
     }
 
