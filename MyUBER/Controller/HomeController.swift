@@ -44,7 +44,15 @@ class HomeController: UIViewController {
             if user?.accountType == .passenger {
                 fetchDrivers()
                 configureLocationInputActivationView()
+            } else {
+                observeTrips()
             }
+        }
+    }
+
+    private var trip: Trip? {
+        didSet {
+            print("DEBUG: show pickup passenger controller")
         }
     }
 
@@ -113,6 +121,12 @@ class HomeController: UIViewController {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
         Service.shared.fetchUserData (uid: currentUid) { user in
             self.user = user
+        }
+    }
+
+    func observeTrips() {
+        Service.shared.observeTrips { trip in
+            self.trip = trip
         }
     }
 
