@@ -34,7 +34,7 @@ enum ButtonAction: CustomStringConvertible {
     var description: String {
         switch self {
         case .requestRide:
-            return "Confirm UberX"
+            return "CONFIRM UBERX"
         case .cancel:
             return "CANCEL RIDE"
         case .getDirections:
@@ -65,6 +65,7 @@ class RideActionView: UIView {
     weak var delegate: RideActionViewDelegate?
     var config = RideActionViewConfiguration()
     var buttonAction = ButtonAction()
+    var user: User?
 
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -171,11 +172,21 @@ class RideActionView: UIView {
     func configureUI(withConfig config: RideActionViewConfiguration) {
         switch config {
         case .requestRide:
-            break
-        case .tripAccepted:
-            titleLabel.text = "En Route To Passenger"
-            buttonAction = .getDirections
+            buttonAction = .requestRide
             actionButton.setTitle(buttonAction.description, for: .normal)
+        case .tripAccepted:
+            guard let user = user else { return }
+
+            if user.accountType == .passenger {
+                titleLabel.text = "En Route To Passenger"
+                buttonAction = .getDirections
+                actionButton.setTitle(buttonAction.description, for: .normal)
+            } else {
+                buttonAction = .cancel
+                actionButton.setTitle(buttonAction.description, for: .normal)
+                titleLabel.text = "Driver En Route"
+            }
+
         case .pickupPassenger:
             break
         case .tripInProgress:
