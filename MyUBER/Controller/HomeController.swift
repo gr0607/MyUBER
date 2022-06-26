@@ -516,7 +516,6 @@ extension HomeController: RideActionViewDelegate {
             }
 
             self.animateRideActionView(shouldShow: false)
-
         }
     }
 }
@@ -536,11 +535,15 @@ extension HomeController: PickupControllerDelegate {
 
         mapView.zoomToFit(annotations: mapView.annotations)
 
+        Service.shared.observeTripCancel(trip: trip) {
+            self.removeAnnotationsAndOverlays()
+            self.animateRideActionView(shouldShow: false)
+        }
+
         self.dismiss(animated: true) {
             Service.shared.fetchUserData(uid: trip.passengerUid, completion: { passenger in
                 self.animateRideActionView(shouldShow: true, config: .tripAccepted, user: passenger)
             })
-
         }
     }
 }
