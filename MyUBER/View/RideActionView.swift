@@ -18,6 +18,10 @@ enum RideActionViewConfiguration {
     case pickupPassenger
     case tripInProgress
     case endTrip
+
+    init() {
+        self = .requestRide
+    }
 }
 
 enum ButtonAction: CustomStringConvertible {
@@ -51,8 +55,6 @@ class RideActionView: UIView {
 
     //MARK: - Properties
 
-
-
     var destination: MKPlacemark? {
         didSet {
             titleLabel.text = destination?.name
@@ -67,7 +69,6 @@ class RideActionView: UIView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18)
-        label.text = "Test address title"
         label.textAlignment = .center
         return label
 
@@ -78,7 +79,6 @@ class RideActionView: UIView {
         label.textColor = .lightGray
         label.font = UIFont.systemFont(ofSize: 16)
         label.textAlignment = .center
-        label.text = "shit of ass of russia"
         return label
     }()
 
@@ -169,6 +169,19 @@ class RideActionView: UIView {
     //MARK: - Helper Functions
 
     func configureUI(withConfig config: RideActionViewConfiguration) {
-
+        switch config {
+        case .requestRide:
+            break
+        case .tripAccepted:
+            titleLabel.text = "En Route To Passenger"
+            buttonAction = .getDirections
+            actionButton.setTitle(buttonAction.description, for: .normal)
+        case .pickupPassenger:
+            break
+        case .tripInProgress:
+            break
+        case .endTrip:
+            break
+        }
     }
 }
