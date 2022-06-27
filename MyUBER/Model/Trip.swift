@@ -9,7 +9,7 @@ import CoreLocation
 
 
 enum TripState: Int {
-    case requested, accepted, inProgress, completed
+    case requested, accepted, driverArrived, inProgress, completed
 }
 
 struct Trip {
@@ -41,6 +41,5 @@ struct Trip {
             self.state = TripState(rawValue: state)
         }
     }
-
 }
 
