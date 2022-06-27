@@ -64,9 +64,13 @@ class RideActionView: UIView {
     }
 
     weak var delegate: RideActionViewDelegate?
-    var config = RideActionViewConfiguration()
     var buttonAction = ButtonAction()
     var user: User?
+    var config = RideActionViewConfiguration() {
+        didSet {
+            configureUI(withConfig: config)
+        }
+    }
 
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -184,7 +188,7 @@ class RideActionView: UIView {
 
     //MARK: - Helper Functions
 
-    func configureUI(withConfig config: RideActionViewConfiguration) {
+    private func configureUI(withConfig config: RideActionViewConfiguration) {
         switch config {
         case .requestRide:
             buttonAction = .requestRide

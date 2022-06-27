@@ -308,7 +308,7 @@ class HomeController: UIViewController {
                 rideActionView.user = user
             }
 
-            rideActionView.configureUI(withConfig: config)
+            rideActionView.config = config
         }
     }
 }
@@ -417,6 +417,8 @@ extension HomeController: CLLocationManagerDelegate{
 
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         print("DEBUG: Driver did enter passenger region")
+
+        self.rideActionView.config = .pickupPassenger
     }
 
     func enableLocationServices() {
