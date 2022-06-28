@@ -147,11 +147,14 @@ class HomeController: UIViewController {
                 self.rideActionView.config = .endTrip
 
             case .completed:
-                self.animateRideActionView(shouldShow: false)
-                self.centerMapOnUserLocation()
-                self.actionButtonConfig = .showMenu
-                self.configureActionButton(config: .showMenu)
-                self.presentAlertController(withTitle: "Trip Completed", withMessage: "We hope you enjoyed your trip")
+                Service.shared.deleteTrip { err, ref in
+                    self.animateRideActionView(shouldShow: false)
+                    self.centerMapOnUserLocation()
+                    self.actionButtonConfig = .showMenu
+                    self.configureActionButton(config: .showMenu)
+                    self.inputActivationView.alpha = 1
+                    self.presentAlertController(withTitle: "Trip Completed", withMessage: "We hope you enjoyed your trip")
+                }
             }
         }
     }
@@ -193,8 +196,9 @@ class HomeController: UIViewController {
             let mapItem = MKMapItem(placemark: placemark)
 
             self.setCustomRegion(withType: .destination, coordinates: trip.destinationCoordinates)
-
             self.generatePolyline(toDestination: mapItem)
+
+            self.mapView.zoomToFit(annotations: self.mapView.annotations)
         }
     }
 
@@ -618,7 +622,7 @@ extension HomeController: RideActionViewDelegate {
     }
 
     func cancelTrip() {
-        Service.shared.cancelTrip { error, ref in
+        Service.shared.deleteTrip { error, ref in
             if let error = error {
                 print("DEBUG: ERROR deleting trip \(error.localizedDescription)")
                 return
@@ -665,7 +669,7 @@ extension HomeController: PickupControllerDelegate {
 
         mapView.zoomToFit(annotations: mapView.annotations)
 
-        Service.shared.observeTripCancel(trip: trip) {
+        Service.shared.observeTripCancelled(trip: trip) {
             self.removeAnnotationsAndOverlays()
             self.animateRideActionView(shouldShow: false)
             self.centerMapOnUserLocation()
