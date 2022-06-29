@@ -26,9 +26,14 @@ private enum AnnotationType: String {
     case destination
 }
 
+protocol HomeControllerDelegate: class {
+    func handleMenuToogle()
+}
+
 class HomeController: UIViewController {
 
     //MARK: - Properties
+    weak var delegate : HomeControllerDelegate?
 
     private let mapView = MKMapView()
     private let locationManager = LocationHandler.shared.locationManager
@@ -101,7 +106,7 @@ class HomeController: UIViewController {
     @objc func actionButtonPressed() {
         switch actionButtonConfig {
         case .showMenu:
-            print("DEBUG: show meny")
+            delegate?.handleMenuToogle()
         case .dismissActionView:
             removeAnnotationsAndOverlays()
             mapView.showAnnotations(mapView.annotations, animated: true)
