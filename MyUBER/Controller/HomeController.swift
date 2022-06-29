@@ -48,7 +48,7 @@ class HomeController: UIViewController {
     private var actionButtonConfig = ActionButtonConfiguration()
     private var route: MKRoute?
 
-    private var user: User? {
+     var user: User? {
         didSet {
             locationInputView.user = user
             if user?.accountType == .passenger {
