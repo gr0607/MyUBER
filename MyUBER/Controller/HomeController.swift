@@ -114,10 +114,10 @@ class HomeController: UIViewController {
         }
     }
 
-    //MARK: - API
+    //MARK: - PASSENGER API
 
     func observeCurrentTrip() {
-        Service.shared.observeCurrentTrip { trip in
+        PassengerService.shared.observeCurrentTrip { trip in
             self.trip = trip
             guard let state = trip.state else { return }
             guard let driverUid = trip.driverUid else { return }
@@ -147,7 +147,7 @@ class HomeController: UIViewController {
                 self.rideActionView.config = .endTrip
 
             case .completed:
-                Service.shared.deleteTrip { err, ref in
+                PassengerService.shared.deleteTrip { err, ref in
                     self.animateRideActionView(shouldShow: false)
                     self.centerMapOnUserLocation()
                     self.actionButtonConfig = .showMenu
@@ -162,7 +162,7 @@ class HomeController: UIViewController {
     func fetchDrivers() {
         guard let location = locationManager?.location else { return }
 
-        Service.shared.fetchDrivers(location: location) { driver in
+        PassengerService.shared.fetchDrivers(location: location) { driver in
             guard let coordinate = driver.location?.coordinate else { return }
             let annotation = DriverAnnotation(uid: driver.uid, coordinate: coordinate)
 
@@ -187,7 +187,7 @@ class HomeController: UIViewController {
 
     func startTrip() {
         guard let trip = trip else { return }
-        Service.shared.updateTripState(trip: trip, state: .inProgress) { err, ref in
+        DriverService.shared.updateTripState(trip: trip, state: .inProgress) { err, ref in
             self.rideActionView.config = .tripInProgress
             self.removeAnnotationsAndOverlays()
             self.mapView.addAnnotationAndSelect(forCoordinate: trip.destinationCoordinates)
@@ -202,16 +202,31 @@ class HomeController: UIViewController {
         }
     }
 
+
+
+    //MARK: - DRIVER API
+
+    func observeTrips() {
+        DriverService.shared.observeTrips { trip in
+            self.trip = trip
+        }
+    }
+
+    func observeCancelledTrip(trip: Trip) {
+            DriverService.shared.observeTripCancelled(trip: trip) {
+            self.removeAnnotationsAndOverlays()
+            self.animateRideActionView(shouldShow: false)
+            self.centerMapOnUserLocation()
+            self.presentAlertController(withTitle: "Oops!" ,withMessage: "The passenger has cancelled this trip")
+        }
+    }
+
+    //MARK: - SHARED API
+
     func fetchUserData() {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
         Service.shared.fetchUserData (uid: currentUid) { user in
             self.user = user
-        }
-    }
-
-    func observeTrips() {
-        Service.shared.observeTrips { trip in
-            self.trip = trip
         }
     }
 
@@ -451,7 +466,7 @@ extension HomeController: MKMapViewDelegate {
         guard let user = self.user else { return }
         guard  user.accountType == .driver else { return }
         guard let location = userLocation.location  else { return }
-        Service.shared.updateDriverLocation(location: location)
+        DriverService.shared.updateDriverLocation(location: location)
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -494,13 +509,13 @@ extension HomeController: CLLocationManagerDelegate{
         guard let trip = self.trip else { return }
 
         if region.identifier == AnnotationType.pickup.rawValue {
-            Service.shared.updateTripState(trip: trip, state: .driverArrived) { err, ref in
+            DriverService.shared.updateTripState(trip: trip, state: .driverArrived) { err, ref in
                 self.rideActionView.config = .pickupPassenger
             }
         }
 
         if region.identifier == AnnotationType.destination.rawValue {
-            Service.shared.updateTripState(trip: trip, state: .arrivedAtDestination) { err, ref in
+            DriverService.shared.updateTripState(trip: trip, state: .arrivedAtDestination) { err, ref in
                 self.rideActionView.config = .endTrip
             }
         }
@@ -609,7 +624,7 @@ extension HomeController: RideActionViewDelegate {
 
         shouldPresentLoadingView(true, message: "Finding you a ride")
 
-        Service.shared.uploadTrip(pickupCoordinates, destinationCoordinates) { err, ref in
+        PassengerService.shared.uploadTrip(pickupCoordinates, destinationCoordinates) { err, ref in
             if let error = err {
                 print("DEBUG: failed to upload tipn with \(error.localizedDescription)")
                 return
@@ -622,7 +637,7 @@ extension HomeController: RideActionViewDelegate {
     }
 
     func cancelTrip() {
-        Service.shared.deleteTrip { error, ref in
+        PassengerService.shared.deleteTrip { error, ref in
             if let error = error {
                 print("DEBUG: ERROR deleting trip \(error.localizedDescription)")
                 return
@@ -645,7 +660,7 @@ extension HomeController: RideActionViewDelegate {
 
     func dropOffPassenger() {
         guard let trip = self.trip else { return }
-        Service.shared.updateTripState(trip: trip, state: .completed) { err, ref in
+        DriverService.shared.updateTripState(trip: trip, state: .completed) { err, ref in
             self.removeAnnotationsAndOverlays()
             self.centerMapOnUserLocation()
             self.animateRideActionView(shouldShow: false)
@@ -669,12 +684,7 @@ extension HomeController: PickupControllerDelegate {
 
         mapView.zoomToFit(annotations: mapView.annotations)
 
-        Service.shared.observeTripCancelled(trip: trip) {
-            self.removeAnnotationsAndOverlays()
-            self.animateRideActionView(shouldShow: false)
-            self.centerMapOnUserLocation()
-            self.presentAlertController(withTitle: "Oops!" ,withMessage: "The passenger has cancelled this trip")
-        }
+        observeCancelledTrip(trip: trip)
 
         self.dismiss(animated: true) {
             Service.shared.fetchUserData(uid: trip.passengerUid, completion: { passenger in
