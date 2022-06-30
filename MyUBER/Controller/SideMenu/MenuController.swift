@@ -9,11 +9,30 @@ import UIKit
 
 private let reuseIdentifier = "MenuCell"
 
+ enum MenuOptions: Int, CaseIterable, CustomStringConvertible {
+    case yourTrips
+    case settings
+    case logout
+
+    var description: String {
+        switch self {
+        case .yourTrips: return "Your Trips"
+        case .settings: return "Settings"
+        case .logout: return "Log Out"
+        }
+    }
+}
+
+protocol MenuControllerDelegate: class {
+    func didSelect(option: MenuOptions)
+}
+
 class MenuController: UIViewController {
 
     //MARK: - Properties
 
     private let user: User
+    weak var delegate: MenuControllerDelegate?
 
     private var tableView = UITableView()
 
@@ -50,6 +69,7 @@ class MenuController: UIViewController {
     func configureTableView() {
         view.addSubview(tableView)
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.frame = view.frame
         tableView.backgroundColor = .white
         tableView.separatorStyle = .none
@@ -60,14 +80,26 @@ class MenuController: UIViewController {
     }
 }
 
-extension MenuController: UITableViewDataSource {
+//MARK: - TableViewDataSource, TableViewDelegate
+
+extension MenuController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return MenuOptions.allCases.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
-        cell.textLabel?.text = "Menu Option"
+
+        guard let option = MenuOptions(rawValue: indexPath.row) else { return UITableViewCell()}
+        cell.textLabel?.text = option.description
+
         return cell
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let option = MenuOptions(rawValue: indexPath.row) else { return }
+        delegate?.didSelect(option: option)
+    }
 }
+
+

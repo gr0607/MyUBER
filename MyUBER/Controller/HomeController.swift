@@ -248,18 +248,6 @@ class HomeController: UIViewController {
         }
     }
 
-    func signOut() {
-        do {
-            try Auth.auth().signOut()
-            DispatchQueue.main.async {
-                let nav = UINavigationController(rootViewController: LoginController())
-                nav.modalPresentationStyle = .fullScreen
-                self.present(nav, animated: true, completion: nil)
-            }
-        } catch {
-            print("DEBUG: Error signing out")
-        }
-    }
 
     //MARK: - Helpers
 
