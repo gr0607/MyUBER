@@ -18,6 +18,8 @@
 		84747607286C97F9004E7D6B /* ContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84747606286C97F9004E7D6B /* ContainerController.swift */; };
 		847ACE05285F6D9400C90ADE /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847ACE04285F6D9400C90ADE /* Service.swift */; };
 		847ACE07285F72BA00C90ADE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847ACE06285F72BA00C90ADE /* User.swift */; };
+		84823F45286E03E200BC2983 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84823F44286E03E200BC2983 /* SettingsController.swift */; };
+		84823F47286E061B00BC2983 /* UserInfoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84823F46286E061B00BC2983 /* UserInfoHeader.swift */; };
 		849B23E52860DD67009628D2 /* DriverAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849B23E42860DD67009628D2 /* DriverAnnotation.swift */; };
 		849F0F8E283BDE0800F3DAD6 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F0F8D283BDE0800F3DAD6 /* LoginController.swift */; };
 		849F0F90283BEB9100F3DAD6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F0F8F283BEB9100F3DAD6 /* Extensions.swift */; };
@@ -47,6 +49,8 @@
 		84747606286C97F9004E7D6B /* ContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerController.swift; sourceTree = "<group>"; };
 		847ACE04285F6D9400C90ADE /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		847ACE06285F72BA00C90ADE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		84823F44286E03E200BC2983 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		84823F46286E061B00BC2983 /* UserInfoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoHeader.swift; sourceTree = "<group>"; };
 		849B23E42860DD67009628D2 /* DriverAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverAnnotation.swift; sourceTree = "<group>"; };
 		849F0F8D283BDE0800F3DAD6 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		849F0F8F283BEB9100F3DAD6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -120,6 +124,7 @@
 				84747602286C97BD004E7D6B /* Authentication */,
 				84136EAB2859107E0023CD1C /* HomeController.swift */,
 				844D438C2866E9870043A58F /* PickupController.swift */,
+				84823F44286E03E200BC2983 /* SettingsController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -133,6 +138,7 @@
 				8450FED3285CD96100DDBCA3 /* LocationCell.swift */,
 				844D17C12864C35400947801 /* RideActionView.swift */,
 				843D21EE286CB68200D26C07 /* MenuHeader.swift */,
+				84823F46286E061B00BC2983 /* UserInfoHeader.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -319,6 +325,8 @@
 				84F04A2C2839356A00D4C0A9 /* AppDelegate.swift in Sources */,
 				84C9871A283D5879003A2CE7 /* AuthButton.swift in Sources */,
 				84136EAC2859107E0023CD1C /* HomeController.swift in Sources */,
+				84823F47286E061B00BC2983 /* UserInfoHeader.swift in Sources */,
+				84823F45286E03E200BC2983 /* SettingsController.swift in Sources */,
 				84C11521285BA4A800EDFA8E /* LocationInputView.swift in Sources */,
 				846CEF192866D39100CA43C2 /* Trip.swift in Sources */,
 				844D438D2866E9870043A58F /* PickupController.swift in Sources */,
