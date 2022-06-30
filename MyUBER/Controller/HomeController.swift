@@ -89,9 +89,8 @@ class HomeController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        checkIfUserIsLoggedIn()
         enableLocationServices()
-      //  signOut()
+        configureUI()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -235,25 +234,12 @@ class HomeController: UIViewController {
         }
     }
 
-    func checkIfUserIsLoggedIn() {
-        if Auth.auth().currentUser?.uid == nil {
-            DispatchQueue.main.async {
-                let nav = UINavigationController(rootViewController: LoginController())
-                nav.modalPresentationStyle = .fullScreen
-                self.present(nav, animated: true, completion: nil)
-            }
-
-        } else {
-            configure()
-        }
-    }
-
 
     //MARK: - Helpers
 
     func configure() {
         configureUI()
-        fetchUserData()
+        //fetchUserData()
     }
 
     fileprivate func configureActionButton(config: ActionButtonConfiguration) {
