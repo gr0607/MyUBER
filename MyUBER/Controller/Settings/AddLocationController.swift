@@ -10,6 +10,10 @@ import MapKit
 
 private let reuseIdentifier = "Cell"
 
+protocol AddLocationControllerDelegate: class {
+   func updateLocation(locationString: String, type: LocationType)
+}
+
 class AddLocationController: UITableViewController {
 
     //MARK: - Properties
@@ -23,6 +27,7 @@ class AddLocationController: UITableViewController {
     }
     private let type: LocationType
     private let location: CLLocation
+    weak var delegate: AddLocationControllerDelegate?
 
     //MARK: - Lifecycle
 
@@ -81,6 +86,14 @@ extension AddLocationController {
         cell.textLabel?.text = result.title
         cell.detailTextLabel?.text = result.subtitle
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let result = searchResults[indexPath.row]
+        let title = result.title
+        let subtitle = result.subtitle
+        let locationString = title + " " + subtitle
+        delegate?.updateLocation(locationString: locationString, type: type)
     }
 }
 

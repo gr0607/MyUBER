@@ -78,7 +78,6 @@ struct PassengerService {
         }
     }
 
-
     func uploadTrip(_ pickupCoordinates: CLLocationCoordinate2D,
                     _ destinationCoordinates: CLLocationCoordinate2D,
                     completion: @escaping (Error?, DatabaseReference) -> Void) {
@@ -108,6 +107,12 @@ struct PassengerService {
     func deleteTrip(completion: @escaping (Error?, DatabaseReference) -> Void) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         REF_TRIPS.child(uid).removeValue(completionBlock: completion)
+    }
+
+    func saveLocation(locationString: String, type: LocationType, completion: @escaping(Error?, DatabaseReference) -> Void) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let key: String = type == .home ? "homeLocation" : "workLocation"
+        REF_USERS.child(uid).child(key).setValue(locationString, withCompletionBlock: completion)
     }
     
 }
