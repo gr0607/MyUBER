@@ -92,8 +92,10 @@ extension AddLocationController {
         let result = searchResults[indexPath.row]
         let title = result.title
         let subtitle = result.subtitle
-        let locationString = title + " " + subtitle
-        delegate?.updateLocation(locationString: locationString, type: type)
+        var  locationString = title + " " + subtitle
+        var trimString = locationString.replacingOccurrences(of: "Leningrad, Russia, ", with: "")
+        trimString.removeLast(8)
+        delegate?.updateLocation(locationString: trimString, type: type)
     }
 }
 
@@ -110,6 +112,6 @@ extension AddLocationController: UISearchBarDelegate {
 extension AddLocationController: MKLocalSearchCompleterDelegate {
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
         searchResults = completer.results
-     //   tableView.reloadData()
+
     }
 }
