@@ -33,6 +33,7 @@ class SettingsController: UITableViewController {
     //MARK: - Properties
 
     private let user: User
+    private let locationManager = LocationHandler.shared.locationManager
 
     private lazy var infoHeader: UserInfoHeader = {
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 100)
@@ -72,6 +73,8 @@ class SettingsController: UITableViewController {
         tableView.register(LocationCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.backgroundColor = .white
         tableView.tableHeaderView  = infoHeader
+        tableView.tableFooterView = UIView()
+
     }
 
     func configureNavigationBar() {
@@ -122,7 +125,11 @@ extension SettingsController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let type = LocationType(rawValue: indexPath.row) else { return  }
+        guard let location = locationManager?.location else { return }
 
-        print("DEBUG: Type is \(type.description)")
+        let controller = AddLocationController(type: type, location: location)
+        let nav = UINavigationController(rootViewController: controller)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true, completion: nil)
     }
 }

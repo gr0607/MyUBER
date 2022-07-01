@@ -33,6 +33,7 @@
 		84F04A332839356A00D4C0A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F04A312839356A00D4C0A9 /* Main.storyboard */; };
 		84F04A352839357400D4C0A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F04A342839357400D4C0A9 /* Assets.xcassets */; };
 		84F04A382839357400D4C0A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F04A362839357400D4C0A9 /* LaunchScreen.storyboard */; };
+		84FF480B286EAED800BAAB08 /* AddLocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF480A286EAED800BAAB08 /* AddLocationController.swift */; };
 		C2AC1800C0B0290A6610F847 /* Pods_MyUBER.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 056E674B4EA8D25A4FD49A97 /* Pods_MyUBER.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,7 @@
 		84F04A342839357400D4C0A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84F04A372839357400D4C0A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84F04A392839357400D4C0A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84FF480A286EAED800BAAB08 /* AddLocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationController.swift; sourceTree = "<group>"; };
 		D469D6BC796F8A153ADFE9E7 /* Pods-MyUBER.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyUBER.debug.xcconfig"; path = "Target Support Files/Pods-MyUBER/Pods-MyUBER.debug.xcconfig"; sourceTree = "<group>"; };
 		E9DD4A295E89042C6273AC5D /* Pods-MyUBER.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyUBER.release.xcconfig"; path = "Target Support Files/Pods-MyUBER/Pods-MyUBER.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,11 +122,11 @@
 		849F0F88283BDC9400F3DAD6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				84FF4809286EAEB100BAAB08 /* Settings */,
 				84747603286C97D4004E7D6B /* SideMenu */,
 				84747602286C97BD004E7D6B /* Authentication */,
 				84136EAB2859107E0023CD1C /* HomeController.swift */,
 				844D438C2866E9870043A58F /* PickupController.swift */,
-				84823F44286E03E200BC2983 /* SettingsController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -188,6 +190,15 @@
 				84136EA9285906EC0023CD1C /* GoogleService-Info.plist */,
 			);
 			path = MyUBER;
+			sourceTree = "<group>";
+		};
+		84FF4809286EAEB100BAAB08 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				84823F44286E03E200BC2983 /* SettingsController.swift */,
+				84FF480A286EAED800BAAB08 /* AddLocationController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		A904BF0C4471CE621EFA7A53 /* Frameworks */ = {
@@ -333,6 +344,7 @@
 				849B23E52860DD67009628D2 /* DriverAnnotation.swift in Sources */,
 				849F0F8E283BDE0800F3DAD6 /* LoginController.swift in Sources */,
 				84C71893285F843800B19634 /* LocaionHandler.swift in Sources */,
+				84FF480B286EAED800BAAB08 /* AddLocationController.swift in Sources */,
 				84F04A2E2839356A00D4C0A9 /* SceneDelegate.swift in Sources */,
 				84747605286C97EF004E7D6B /* MenuController.swift in Sources */,
 				8450FED4285CD96100DDBCA3 /* LocationCell.swift in Sources */,
