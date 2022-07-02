@@ -241,6 +241,8 @@ class HomeController: UIViewController {
 
     func configureSavedUserLocation() {
         guard let user = user else { return }
+        savedLocations.removeAll()
+
         if let userLocation = user.homeLocation {
             geocodeAddressString(address: userLocation)
         }
@@ -602,7 +604,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedPlacemark = searchResults[indexPath.row]
+        let selectedPlacemark = indexPath.section == 0 ? savedLocations[indexPath.row] : searchResults[indexPath.row]
 
         configureActionButton(config: .dismissActionView)
 
